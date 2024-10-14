@@ -30,16 +30,20 @@
             font-size: 2.2rem;
         }
 
+        nav {
+            margin-top: 10px;
+        }
+
         nav ul {
             list-style-type: none;
             padding: 0;
-            margin: 15px 0 0 0;
+            margin: 0;
             text-align: center;
+            display: none; /* Hidden by default for mobile, shown when hamburger is clicked */
         }
 
         nav ul li {
-            display: inline-block;
-            margin: 10px 10px;
+            margin: 10px 0;
         }
 
         nav ul li a {
@@ -54,6 +58,13 @@
 
         nav ul li a:hover {
             background-color: #005bb5;
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            font-size: 30px;
+            cursor: pointer;
+            display: none;
         }
 
         /* Main Content */
@@ -119,21 +130,12 @@
                 font-size: 1.8rem;
             }
 
+            .hamburger {
+                display: block;
+            }
+
             nav ul {
-                padding: 0;
-                margin: 15px 0;
-                text-align: center;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 5px 0;
-            }
-
-            nav ul li a {
-                display: block;
-                font-size: 1rem;
-                padding: 10px 20px;
+                display: none;
             }
 
             .intro h2 {
@@ -157,16 +159,12 @@
                 font-size: 1.5rem;
             }
 
-            nav ul {
-                margin: 10px 0;
+            .intro h2 {
+                font-size: 1.6rem;
             }
 
             .content-wrapper {
                 padding: 20px 10px;
-            }
-
-            .intro h2 {
-                font-size: 1.6rem;
             }
 
             .app-button {
@@ -185,8 +183,9 @@
 
     <header>
         <h1>Republic of Colavia</h1>
+        <span class="hamburger" onclick="toggleMenu()">&#9776;</span>
         <nav>
-            <ul>
+            <ul id="nav-menu">
                 <li><a onclick="navigateTo('home')">Home</a></li>
                 <li><a onclick="navigateTo('citizenship')">Citizenship Application</a></li>
                 <li><a onclick="navigateTo('visa')">Visa Application</a></li>
@@ -253,6 +252,16 @@
     </footer>
 
     <script>
+        // Function to toggle navigation menu on mobile
+        function toggleMenu() {
+            var menu = document.getElementById('nav-menu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+
         // Function to open Google Forms
         function openForm(url) {
             window.open(url, '_blank');
