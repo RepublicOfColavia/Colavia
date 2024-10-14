@@ -30,6 +30,7 @@
             font-size: 2.2rem;
         }
 
+        /* Desktop Navigation */
         nav {
             margin-top: 10px;
         }
@@ -39,11 +40,11 @@
             padding: 0;
             margin: 0;
             text-align: center;
-            display: none; /* Hidden by default for mobile, shown when hamburger is clicked */
         }
 
         nav ul li {
-            margin: 10px 0;
+            display: inline-block;
+            margin: 10px;
         }
 
         nav ul li a {
@@ -60,11 +61,49 @@
             background-color: #005bb5;
         }
 
-        /* Hamburger menu for mobile */
+        /* Mobile Hamburger Menu */
         .hamburger {
             font-size: 30px;
             cursor: pointer;
+            display: none; /* Hidden by default, only show on mobile */
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Hide full menu on mobile */
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger icon on mobile */
+            }
+        }
+
+        /* Mobile Navigation when Hamburger is clicked */
+        .mobile-menu {
             display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0; /* Spacing between buttons */
+        }
+
+        .mobile-menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #0073e6;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-menu li a:hover {
+            background-color: #005bb5;
         }
 
         /* Main Content */
@@ -130,14 +169,6 @@
                 font-size: 1.8rem;
             }
 
-            .hamburger {
-                display: block;
-            }
-
-            nav ul {
-                display: none;
-            }
-
             .intro h2 {
                 font-size: 1.8rem;
             }
@@ -195,6 +226,16 @@
                 <li><a onclick="navigateTo('aoc')">AOC Application</a></li>
             </ul>
         </nav>
+        <!-- Mobile menu for small screens -->
+        <ul id="mobile-menu" class="mobile-menu">
+            <li><a onclick="navigateTo('home')">Home</a></li>
+            <li><a onclick="navigateTo('citizenship')">Citizenship Application</a></li>
+            <li><a onclick="navigateTo('visa')">Visa Application</a></li>
+            <li><a onclick="navigateTo('ppl')">PPL Application</a></li>
+            <li><a onclick="navigateTo('commercial-license')">Commercial Pilot License</a></li>
+            <li><a onclick="navigateTo('business')">Business Application</a></li>
+            <li><a onclick="navigateTo('aoc')">AOC Application</a></li>
+        </ul>
     </header>
 
     <div class="content-wrapper">
@@ -228,21 +269,21 @@
         <!-- Commercial Pilot License Application Page -->
         <section id="commercial-license" class="hidden">
             <h2>Apply for Commercial Pilot License</h2>
-            <p>Advance your flying career with a Commercial Pilot License. Fill out the form below to apply:</p>
+            <p>Pursue your dream of becoming a commercial pilot. Apply using the form below:</p>
             <button class="app-button" onclick="openForm('https://forms.gle/commercialLicenseLink')">Apply for Commercial License</button>
         </section>
 
         <!-- Business Application Page -->
         <section id="business" class="hidden">
-            <h2>Apply for Business License</h2>
-            <p>Start your business journey in the Republic of Colavia. Fill out the form below to apply for a business license:</p>
-            <button class="app-button" onclick="openForm('https://forms.gle/businessLink')">Apply for Business License</button>
+            <h2>Start a Business</h2>
+            <p>Start your business in Colavia and thrive in our dynamic economy. Apply using the form below:</p>
+            <button class="app-button" onclick="openForm('https://forms.gle/businessLink')">Apply for Business</button>
         </section>
 
         <!-- AOC Application Page -->
         <section id="aoc" class="hidden">
-            <h2>Apply for AOC (Air Operator Certificate)</h2>
-            <p>Starting an airline? Apply for an Air Operator Certificate (AOC) using the form below:</p>
+            <h2>Apply for an Air Operator Certificate (AOC)</h2>
+            <p>Start your own airline in Colavia by applying for an AOC using the form below:</p>
             <button class="app-button" onclick="openForm('https://forms.gle/aocLink')">Apply for AOC</button>
         </section>
     </div>
@@ -252,9 +293,9 @@
     </footer>
 
     <script>
-        // Function to toggle navigation menu on mobile
+        // Function to toggle mobile menu
         function toggleMenu() {
-            var menu = document.getElementById('nav-menu');
+            const menu = document.getElementById('mobile-menu');
             if (menu.style.display === 'block') {
                 menu.style.display = 'none';
             } else {
