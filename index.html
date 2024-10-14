@@ -18,7 +18,7 @@
         header {
             background-color: #00539C;
             color: #fff;
-            padding: 20px;
+            padding: 15px 20px;
             text-align: center;
             position: sticky;
             top: 0;
@@ -27,30 +27,39 @@
 
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
         }
 
         nav ul {
             list-style-type: none;
             padding: 0;
+            margin: 15px 0 0 0;
+            text-align: center;
         }
 
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            display: inline-block;
+            margin: 10px 10px;
         }
 
         nav ul li a {
             color: #fff;
             text-decoration: none;
             font-size: 1.1rem;
-            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background-color: #0073e6;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #005bb5;
         }
 
         /* Main Content */
         .content-wrapper {
-            padding: 50px;
-            padding-bottom: 100px; /* Space for the fixed footer */
+            padding: 40px 20px;
+            padding-bottom: 120px; /* Space for the fixed footer */
             text-align: center;
         }
 
@@ -64,23 +73,24 @@
 
         .intro {
             background-color: #e1f0fa;
-            padding: 40px;
+            padding: 30px 20px;
         }
 
         .intro h2 {
-            font-size: 2.2rem;
+            font-size: 2rem;
         }
 
         .app-button {
             background-color: #0073e6;
             color: #fff;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border: none;
             border-radius: 5px;
             font-size: 1.1rem;
             cursor: pointer;
             transition: background-color 0.3s;
             margin: 10px; /* Space between buttons */
+            display: inline-block;
         }
 
         .app-button:hover {
@@ -90,7 +100,7 @@
         footer {
             background-color: #00539C;
             color: #fff;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             position: fixed;
             bottom: 0;
@@ -101,6 +111,73 @@
         footer p {
             margin: 0;
             font-size: 1rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                padding: 0;
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+
+            nav ul li a {
+                display: block;
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .intro h2 {
+                font-size: 1.8rem;
+            }
+
+            .content-wrapper {
+                padding: 30px 15px;
+            }
+
+            .app-button {
+                width: 100%;
+                max-width: 300px;
+                font-size: 1rem;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                margin: 10px 0;
+            }
+
+            .content-wrapper {
+                padding: 20px 10px;
+            }
+
+            .intro h2 {
+                font-size: 1.6rem;
+            }
+
+            .app-button {
+                font-size: 0.9rem;
+                padding: 10px;
+                max-width: 280px;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -114,10 +191,9 @@
                 <li><a onclick="navigateTo('citizenship')">Citizenship Application</a></li>
                 <li><a onclick="navigateTo('visa')">Visa Application</a></li>
                 <li><a onclick="navigateTo('ppl')">PPL Application</a></li>
-                <li><a onclick="navigateTo('commercial-license')">CPL Application</a></li>
+                <li><a onclick="navigateTo('commercial-license')">Commercial Pilot License</a></li>
                 <li><a onclick="navigateTo('business')">Business Application</a></li>
                 <li><a onclick="navigateTo('aoc')">AOC Application</a></li>
-		<li><a onclick="navigateTo('gov')">Government</a></li>
             </ul>
         </nav>
     </header>
@@ -126,58 +202,49 @@
         <!-- Home Section -->
         <section id="home" class="intro">
             <h2>Welcome to the Republic of Colavia</h2>
-            <p>Explore our website to learn more and apply for our programs.</p>
-			<br>
-			<p>Did you know we have an airline? Click below to visit the Air Colavia website:</p>
-			<a href="https://republicofcolavia.github.io/aircolavia">Air Colavia</a>
+            <p>We are a proud and vibrant nation, with a rich culture, strong economy, and a vision for a prosperous future. Explore our website to learn more and apply for our programs.</p>
         </section>
-
-	<section id="gov" class="hidden">
-		<h2>Government</h2>
-		<h4>Dictator:</h4>
-		<p>Cole Arbuckle</p>
-	</section>
 
         <!-- Citizenship Application Page -->
         <section id="citizenship" class="hidden">
             <h2>Apply for Citizenship</h2>
             <p>We invite you to become a proud citizen of the Republic of Colavia. Fill out the form below to apply for citizenship:</p>
-            <button class="app-button" onclick="openForm('https://forms.gle/NYPCZGJJ4CuF5Jgt7')">Apply for Citizenship</button>
+            <button class="app-button" onclick="openForm('https://forms.gle/citizenshipLink')">Apply for Citizenship</button>
         </section>
 
         <!-- Visa Application Page -->
         <section id="visa" class="hidden">
             <h2>Apply for a Visa</h2>
             <p>Planning a visit to the Republic of Colavia? Apply for a visa using the form below:</p>
-            <button class="app-button" onclick="openForm('https://forms.gle/JNGBP6T1xZHPyCgh8')">Apply for a Visa</button>
+            <button class="app-button" onclick="openForm('https://forms.gle/visaLink')">Apply for a Visa</button>
         </section>
 
         <!-- PPL Application Page -->
         <section id="ppl" class="hidden">
             <h2>Apply for Private Pilot License (PPL)</h2>
             <p>Become a licensed private pilot in the Republic of Colavia. Fill out the form below to apply:</p>
-            <button class="app-button" onclick="openForm('https://forms.gle/bmrcvPDnV6vyE64N7')">Apply for PPL</button>
+            <button class="app-button" onclick="openForm('https://forms.gle/pplLink')">Apply for PPL</button>
         </section>
 
         <!-- Commercial Pilot License Application Page -->
         <section id="commercial-license" class="hidden">
             <h2>Apply for Commercial Pilot License</h2>
             <p>Advance your flying career with a Commercial Pilot License. Fill out the form below to apply:</p>
-            <button class="app-button" onclick="openForm('https://forms.gle/s7MRXvBzf1hqSyJz6')">Apply for Commercial License</button>
+            <button class="app-button" onclick="openForm('https://forms.gle/commercialLicenseLink')">Apply for Commercial License</button>
         </section>
 
         <!-- Business Application Page -->
         <section id="business" class="hidden">
             <h2>Apply for Business License</h2>
-            <p>Start your business journey in the Republic of Colavia. Fill out the form below to start a business:</p>
-            <button class="app-button" onclick="openForm('https://forms.gle/7NFtA11gm8vqTgQ37')">Apply to start a business</button>
+            <p>Start your business journey in the Republic of Colavia. Fill out the form below to apply for a business license:</p>
+            <button class="app-button" onclick="openForm('https://forms.gle/businessLink')">Apply for Business License</button>
         </section>
 
         <!-- AOC Application Page -->
         <section id="aoc" class="hidden">
             <h2>Apply for AOC (Air Operator Certificate)</h2>
             <p>Starting an airline? Apply for an Air Operator Certificate (AOC) using the form below:</p>
-            <button class="app-button" onclick="openForm('https://forms.gle/A89cnf7uQPzgkKn87')">Apply for AOC</button>
+            <button class="app-button" onclick="openForm('https://forms.gle/aocLink')">Apply for AOC</button>
         </section>
     </div>
 
